@@ -32,4 +32,6 @@ venv/
 env/
 .venv/
 
-# NOTE: node_modules IS intentionally included in this repo
+# node_modules - do not commit
+node_modules/
+sera-frontend/node_modules/
