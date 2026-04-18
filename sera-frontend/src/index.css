@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  /* System Foundations */
+  --font-main: 'Outfit', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  /* Light Theme Variables */
+  --app-bg: #f8fafc;
+  --app-text: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --border-color: rgba(0, 0, 0, 0.05);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --muted-text: #64748b;
+  --input-bg: #ffffff;
+
+  font-family: var(--font-main);
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  color: var(--app-text);
+  background-color: var(--app-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-smoothing: grayscale;
+}
+
+[data-theme='dark'] {
+  --app-bg: #0c0e12;
+  --app-text: rgba(255, 255, 255, 0.9);
+  --card-bg: rgba(18, 22, 28, 0.85);
+  --nav-bg: rgba(10, 12, 16, 0.95);
+  --border-color: rgba(255, 255, 255, 0.05);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --muted-text: #94a3b8;
+  --input-bg: #0a0c10;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--app-bg);
+  color: var(--app-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  width: 100%;
+}
+
+@theme {
+  --color-primary-50: #f0fdfa;
+  --color-primary-100: #ccfbf1;
+  --color-primary-200: #99f6e4;
+  --color-primary-300: #5eead4;
+  --color-primary-400: #2dd4bf;
+  --color-primary-500: #14b8a6; 
+  --color-primary-600: #0d9488;
+  --color-primary-700: #0f766e;
+  --color-primary-800: #115e59;
+  --color-primary-900: #134e4a;
+
+  --color-emergency-low: #059669;
+  --color-emergency-medium: #d97706;
+  --color-emergency-high: #e11d48;
+  --color-emergency-critical: #881337;
+  
+  --color-surface-bg: var(--app-bg);
+  --color-surface-text: var(--app-text);
+  --color-surface-card: var(--card-bg);
+  --color-surface-nav: var(--nav-bg);
+  --color-surface-border: var(--border-color);
+  --color-surface-muted: var(--muted-text);
+  --color-surface-input: var(--input-bg);
+}
+
+@layer utilities {
+  .glass-card {
+    background: var(--color-surface-card);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--color-surface-border);
+    box-shadow: 0 20px 50px var(--shadow-color);
+  }
+
+  .glass-navbar {
+    background: var(--color-surface-nav);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-surface-border);
+  }
+
+  .human-shadow {
+    box-shadow: 0 10px 30px -10px var(--shadow-color);
+  }
+
+  .animate-slow-glow {
+    animation: slow-glow 4s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes slow-glow {
+  from {
+    filter: drop-shadow(0 0 2px rgba(20, 184, 166, 0.1));
+  }
+  to {
+    filter: drop-shadow(0 0 10px rgba(20, 184, 166, 0.3));
+  }
+}
+
+.transition-human {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
